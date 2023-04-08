@@ -43,11 +43,11 @@ export async function getStaticProps({ params }) {
 
 const ListedHome = (home = null) => {
   return (
-    <div>
-      <div className="max-w-screen-lg mx-auto">
+    <div className='bg-gray-100 h-screen '>
+      <div className="max-w-screen-lg mx-auto  ">
         <div className="flex flex-col sm:flex-row sm:justify-between sm:space-x-4 space-y-4">
           <div>
-            <h1 className="text-2xl font-semibold truncate">
+            <h1 className="text-2xl font-semibold truncate text-gray-800 ">
               {home?.title ?? ''}
             </h1>
             <ol className="inline-flex items-center space-x-1 text-gray-500">
@@ -66,7 +66,7 @@ const ListedHome = (home = null) => {
                 <span>{home?.sqfeet ?? 0} sqfeet</span>
               </li>
             </ol>
-            <p className="">
+            <p className="text-gray-700">
               {home?.address ?? ''}
             </p>
           </div>
@@ -83,7 +83,7 @@ const ListedHome = (home = null) => {
           ) : null}
         </div>
 
-        <p className="mt-8 text-lg">{home?.description ?? ''}</p>
+        <p className="mt-8 text-lg text-gray-800 ">{home?.description ?? ''}</p>
       </div>
     </div>
   );

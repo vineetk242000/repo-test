@@ -13,7 +13,7 @@ const Grid = ({ homes = [] }) => {
       <span>Unfortunately, there is nothing to display yet.</span>
     </p>
   ) : (
-    <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+    <div className="grid   gap-4 pt-8 md:grid-cols-2 lg:grid-cols-3 lg:gap-14">
       {homes.map(home => (
         <Card key={home.id} {...home} />
       ))}

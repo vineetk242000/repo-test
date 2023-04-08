@@ -1,8 +1,8 @@
 // import Layout from '@/components/Layout';
-import axios from 'axios';
-import ListingForm from "../../components/ListingForm";
+import axios from "axios";
+import ListingForm from "../components/ListingForm";
 const Create = () => {
-  const addHome = data => axios.post('/api/homes', data);
+  const addHome = data => axios.post("/api/homes", data);
 
   return (
     <div>
