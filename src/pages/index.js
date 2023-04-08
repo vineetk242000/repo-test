@@ -12,7 +12,7 @@
 // }
 
 // import Layout from '@/components/Layout';
-import Grid from "../../components/grid";
+import Grid from "../components/Grid";
 import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
@@ -42,8 +42,8 @@ export default function Home({ homes = [] }) {
           <Grid homes={homes} />
         </div>
       </div> */}
-      <section className="bg-gray-200 h-screen ">
-      <h1 className="text-xl font-medium text-gray-800">
+      <section className="bg-gray-200 ">
+        <h1 className="text-xl font-medium text-gray-800">
           Top-rated places to stay
         </h1>
         <p className="text-gray-500">
@@ -51,13 +51,8 @@ export default function Home({ homes = [] }) {
         </p>
         <div className="container mx-auto w-3/4 flex justify-center">
           
-          <div className="grid   gap-4 pt-8 md:grid-cols-2 lg:grid-cols-3 lg:gap-14 ">
-            {/* {houses.map((house, index) => {
-              return <Houses house={house} key={index} />;
-            })} */}
-          <Grid homes={homes} />
-
-          </div>
+            <Grid homes={homes} />
+         
         </div>
       </section>
     </>
