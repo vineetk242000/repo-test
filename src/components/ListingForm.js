@@ -79,8 +79,8 @@ const ListingForm = ({
   };
 
   return (
-    <div>
-      <div className="mb-8 max-w-md">
+    <div className='' >
+      <div className="mb-8 max-w-md  ">
         <ImageUpload
           initialImage={{ src: image, alt: initialFormValues.title }}
           onChangePicture={upload}
@@ -94,13 +94,14 @@ const ListingForm = ({
         onSubmit={handleOnSubmit}
       >
         {({ isSubmitting, isValid }) => (
-          <Form className="space-y-8">
+          <Form className="space-y-8 text-gray-900 ">
             <div className="space-y-6">
               <Input
                 name="title"
                 type="text"
                 label="Title"
                 placeholder="Entire rental unit - Amsterdam"
+               
                 disabled={disabled}
               />
 
