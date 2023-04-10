@@ -79,7 +79,7 @@ const Card = ({
   //   </div>
   // </Link>
   <Link href={`/homes/${id}`}>
-    <div className="relative max-w-sm rounded-lg shadow-md hover:shadow-xl">
+    <div className="relative max-w-sm rounded-lg shadow-md hover:shadow-xl bg-white">
       {/* <Image className="rounded-t-lg  " src="/dummyhouse.png" width={369} height={100} alt="" /> */}
      <div className=" h-56 overflow-hidden ">
      {image ? (
