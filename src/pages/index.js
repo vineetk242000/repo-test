@@ -42,7 +42,7 @@ export default function Home({ homes = [] }) {
           <Grid homes={homes} />
         </div>
       </div> */}
-      <section className="bg-gray-200 ">
+      <section className="bg-gray-200 min-h-screen ">
         <h1 className="text-xl font-medium text-gray-800">
           Top-rated places to stay
         </h1>
