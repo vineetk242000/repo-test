@@ -78,8 +78,7 @@ const ImageUpload = ({
           <Image
             src={image.src}
             alt={image?.alt ?? ""}
-            layout="fill"
-            objectFit={objectFit}
+            fill
           />
         ) : null}
 
