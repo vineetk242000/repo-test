@@ -100,9 +100,9 @@ const Card = ({
       <BsTriangleFill className=" absolute  -ml-2.5 rotate-12  text-purple-900" />
       <div className="flex justify-between px-5 pt-8">
         <p className="mb-2 text-xl font-bold tracking-tight text-purple-700 ">
-          {new Intl.NumberFormat("en-US", {
+          {new Intl.NumberFormat("en-IN", {
             style: "currency",
-            currency: "USD",
+            currency: "INR",
           }).format(price ?? 0)}{" "}
           <span className=" text-sm font-normal text-gray-500">/month</span>
         </p>

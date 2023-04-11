@@ -43,15 +43,17 @@ export default function Home({ homes = [] }) {
         </div>
       </div> */}
       <Layout>
-        <section className="bg-gray-200">
+        <section className="bg-gray-100 ">
+          <div className="mx-auto w-3/4 border border-none py-10">
           <h1 className="text-xl font-medium text-gray-800">
             Top-rated places to stay
           </h1>
           <p className="text-gray-500">
             Explore some of the best places in the world
           </p>
-          <div className="container mx-auto w-3/4 flex justify-center">
+          <div className="container  flex justify-center">
             <Grid homes={homes} />
+          </div>
           </div>
         </section>
       </Layout>

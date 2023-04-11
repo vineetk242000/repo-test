@@ -7,6 +7,7 @@ import PropTypes from "prop-types";
 import { useSession, signOut } from "next-auth/react";
 import AuthModal from "./AuthModal";
 import { Menu, Transition } from "@headlessui/react";
+import Footer from "./Footer";
 // import {
 //   AiOutlineHeart,
 //   AiOutlineHome,
@@ -152,14 +153,14 @@ const Layout = ({ children = null }) => {
                                 <Menu.Item>
                                   {href ? (
                                     <Link legacyBehavior href={href}>
-                                      <a className="flex items-center space-x-2 py-2 px-4 rounded-md hover:bg-gray-100">
+                                      <a className="flex items-center space-x-2 py-2 px-4 rounded-md hover:bg-purple-100">
                                         <Icon className="w-5 h-5 shrink-0 text-gray-500" />
                                         <span>{label}</span>
                                       </a>
                                     </Link>
                                   ) : (
                                     <button
-                                      className="w-full flex items-center space-x-2 py-2 px-4 rounded-md hover:bg-gray-100"
+                                      className="w-full flex items-center space-x-2 py-2 px-4 rounded-md hover:bg-purple-100"
                                       onClick={onClick}
                                     >
                                       <Icon className="w-5 h-5 shrink-0 text-gray-500" />
@@ -195,6 +196,9 @@ const Layout = ({ children = null }) => {
         </main>
 
         <AuthModal show={showModal} onClose={closeModal} />
+        <footer>
+          <Footer />
+        </footer>
       </div>
     </>
   );
