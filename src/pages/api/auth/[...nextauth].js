@@ -1,10 +1,10 @@
 // pages/api/auth/[...nextauth].js
 import NextAuth from 'next-auth';
 import EmailProvider from 'next-auth/providers/email';
-import nodemailer from 'nodemailer';
-
+import GoogleProvider from 'next-auth/providers/google';
 import { PrismaAdapter } from '@next-auth/prisma-adapter';
 import { PrismaClient } from '@prisma/client';
+import nodemailer from 'nodemailer';
 import Handlebars from 'handlebars';
 import { readFileSync } from 'fs';
 import path from 'path';
@@ -23,8 +23,9 @@ const transporter = nodemailer.createTransport({
 });
 
 
-// Verify custom email
 const emailsDir = path.resolve(process.cwd(), 'emails');
+// Verify custom email
+
 const sendVerificationRequest = ({ identifier, url }) => {
   const emailFile = readFileSync(path.join(emailsDir, 'confirm-email.html'), {
     encoding: 'utf8',
@@ -69,10 +70,20 @@ const sendWelcomeEmail = async ({ user }) => {
 
 // pages/api/auth/[...nextauth].js
 export default NextAuth({
+  pages: {
+    signIn: '/',
+    signOut: '/',
+    error: '/',
+    verifyRequest: '/',
+  },
   providers: [
     EmailProvider({
       maxAge: 10 * 60, // Magic links are valid for 10 min only
       sendVerificationRequest,
+    }),
+    GoogleProvider({
+      clientId: process.env.GOOGLE_ID,
+      clientSecret: process.env.GOOGLE_SECRET,
     }),
   ],
   adapter: PrismaAdapter(prisma),

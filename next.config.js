@@ -8,6 +8,6 @@ module.exports = nextConfig
 module.exports = {
   reactStrictMode: true,
   images: {
-    domains: ['kttjjhauifsseapxxcdj.supabase.co', 'kttjjhauifsseapxxcdj.supabase.in'],
+    domains: ['kttjjhauifsseapxxcdj.supabase.co', 'kttjjhauifsseapxxcdj.supabase.in', 'lh3.googleusercontent.com'],
   },
 };
