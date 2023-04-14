@@ -18,7 +18,7 @@ export async function getStaticPaths() {
     })),
     fallback: true,
   };
-}   
+}
 
 export async function getStaticProps({ params }) {
   // Get the current home from the database
@@ -43,10 +43,10 @@ export async function getStaticProps({ params }) {
 const ListedHome = (home = null) => {
    // Retrieve the Next.js router
  	const router = useRouter();
-  
+
   // Fallback version
   if (router.isFallback) {
-  	return 'Loading...'; 
+  	return 'Loading...';
   }
   return (
     <Layout>
@@ -84,7 +84,7 @@ const ListedHome = (home = null) => {
             <Image
               src={home.image}
               alt={home.title}
-              width={369} height={100} 
+              width={369} height={100}
             />
           ) : null}
         </div>
@@ -95,5 +95,4 @@ const ListedHome = (home = null) => {
     </Layout>
   );
 };
-
 export default ListedHome;
