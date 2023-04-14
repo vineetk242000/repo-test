@@ -43,7 +43,7 @@ export default function Home({ homes = [] }) {
         </div>
       </div> */}
       <Layout>
-        <section className="bg-gray-100 ">
+        <section className="bg-gray-100 min-h-screen ">
           <div className="mx-auto w-3/4 border border-none py-10">
           <h1 className="text-xl font-medium text-gray-800">
             Top-rated places to stay

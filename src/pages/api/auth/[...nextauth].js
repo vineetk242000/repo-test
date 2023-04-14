@@ -69,7 +69,7 @@ const sendWelcomeEmail = async ({ user }) => {
 
 
 // pages/api/auth/[...nextauth].js
-export default NextAuth({
+export const authOptions =({
   pages: {
     signIn: '/',
     signOut: '/',
@@ -88,4 +88,7 @@ export default NextAuth({
   ],
   adapter: PrismaAdapter(prisma),
   events: { createUser: sendWelcomeEmail }
+  
 });
+
+export default NextAuth(authOptions)
