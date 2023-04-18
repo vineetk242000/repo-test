@@ -1,6 +1,12 @@
 import { PrismaClient } from '@prisma/client';
 import { getServerSession } from "next-auth/next"
 import { authOptions } from "../auth/[...nextauth]"
+import { createClient } from '@supabase/supabase-js';
+
+const supabase = createClient(
+  process.env.SUPABASE_URL,
+  process.env.SUPABASE_KEY
+);
 
 const prisma = new PrismaClient();
 
@@ -36,9 +42,25 @@ export default async function handler(req, res) {
       res.status(500).json({ message: 'Something went wrong' });
     }
   }
+  // Delete home
+  else if (req.method === 'DELETE') {
+    // TODO
+    try {
+      const home = await prisma.home.delete({
+        where: { id },
+      });
+      if (home.image) {
+        const path = home.image.split(`${process.env.SUPABASE_BUCKET}/`)?.[1];
+        await supabase.storage.from(process.env.SUPABASE_BUCKET).remove([path]);
+      }
+      res.status(200).json(home);
+    } catch (e) {
+      res.status(500).json({ message: 'Something went wrong' });
+    }
+  } 
   // HTTP method not supported!
   else {
-    res.setHeader('Allow', ['PATCH']);
+    res.setHeader('Allow', ['PATCH', 'DELETE']);
     res
       .status(405)
       .json({ message: `HTTP method ${req.method} is not supported.` });

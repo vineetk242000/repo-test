@@ -31,17 +31,6 @@ export async function getServerSideProps() {
 export default function Home({ homes = [] }) {
   return (
     <>
-      {/* <div className=" bg-slate-300 ">
-        <h1 className="text-xl font-medium text-gray-800">
-          Top-rated places to stay
-        </h1>
-        <p className="text-gray-500">
-          Explore some of the best places in the world
-        </p>
-        <div className="mt-8">
-          <Grid homes={homes} />
-        </div>
-      </div> */}
       <Layout>
         <section className="bg-gray-100 min-h-screen ">
           <div className="mx-auto w-3/4 border border-none py-10">

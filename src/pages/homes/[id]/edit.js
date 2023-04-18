@@ -45,12 +45,15 @@ const Edit = (home = null) => {
   axios.patch(`/api/homes/${home.id}`, data);
   return (
     <Layout>
+      <div className="bg-gray-100 p-5">
+
+      
       <div className="max-w-screen-sm mx-auto">
         <h1 className="text-xl font-medium text-gray-800">Edit your home</h1>
         <p className="text-gray-500">
           Fill out the form below to update your home.
         </p>
-        <div className="mt-8">
+        <div className="mt-8 bg-white p-7 shadow-md rounded-md">
         {home ? (
             <ListingForm
               initialValues={home}
@@ -60,6 +63,7 @@ const Edit = (home = null) => {
             />
           ) : null}
         </div>
+      </div>
       </div>
     </Layout>
   );

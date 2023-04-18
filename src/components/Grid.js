@@ -5,8 +5,6 @@ import Card from './Card';
 const Grid = ({ homes = [] }) => {
   const isEmpty = homes.length === 0;
 
-  //...
-
   return isEmpty ? (
     <p className="text-amber-700 bg-amber-100 px-4 rounded-md py-2 max-w-max inline-flex items-center space-x-1">
       {/* <ExclamationIcon className="shrink-0 w-5 h-5 mt-px" /> */}
