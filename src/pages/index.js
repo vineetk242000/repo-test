@@ -13,37 +13,53 @@
 
 import Layout from "../components/Layout";
 import Grid from "../components/Grid";
-import { PrismaClient } from "@prisma/client";
 import CardSwiper from "../components/CardSwiper";
+import axios from "axios";
+import { useEffect, useState } from "react";
 
-const prisma = new PrismaClient();
 
-export async function getServerSideProps() {
-  // Get all homes
-  const homes = await prisma.home.findMany();
-  // Pass the data to the Home page
-  return {
-    props: {
-      homes: JSON.parse(JSON.stringify(homes)),
-    },
-  };
-}
+export default function Home() {
+  const [homes, setHomes] = useState([]);
+  // loading state
+  const [loading, setLoading] = useState(true);
+  useEffect(() => {
+    axios.get("/api/get-homes").then(res => {
+      setHomes(res.data);
+      setLoading(false);
+    });
+  }, []);
 
-export default function Home({ homes = [] }) {
+  if (loading) {
+    return (
+      <Layout>
+        <div className="bg-gray-100 min-h-screen ">
+          <div className="max-w-screen-lg mx-auto p-5 ">
+            <div className="flex flex-col sm:flex-row sm:justify-between sm:space-x-4 space-y-4">
+              <div>
+                <h1 className="text-2xl font-semibold truncate text-gray-800 ">
+                  Loading...
+                </h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </Layout>
+    );
+  }
   return (
     <>
       <Layout>
         <section className="bg-gray-100 min-h-screen ">
           <div className="mx-auto w-3/4 border border-none py-10">
-          <h1 className="text-xl font-medium text-gray-800">
-            Top-rated places to stay
-          </h1>
-          <p className="text-gray-500">
-            Explore some of the best places in the world
-          </p>
-          <div className="container  flex justify-center">
-            <Grid homes={homes} />
-          </div>
+            <h1 className="text-xl font-medium text-gray-800">
+              Top-rated places to stay
+            </h1>
+            <p className="text-gray-500">
+              Explore some of the best places in the world
+            </p>
+            <div className="container  flex justify-center">
+              <Grid homes={homes} />
+            </div>
           </div>
         </section>
       </Layout>
