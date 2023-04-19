@@ -17,11 +17,14 @@ model Home {
   title       String
   description String
   address     String
+  locality    String
   price       Float
   guests      Int
   beds        Int
   baths       Int
   sqfeet      Int
+  ownerName   String
+  contact     String
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
   owner       User     @relation(fields: [ownerId], references: [id])

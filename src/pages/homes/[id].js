@@ -9,6 +9,8 @@ import toast from "react-hot-toast";
 import { BiBed, BiBath, BiArea } from "react-icons/bi";
 import { BsStars, BsTriangleFill } from "react-icons/bs";
 import { BiBuildingHouse } from "react-icons/bi";
+import {MdDeleteOutline} from "react-icons/md";
+import CardSwiper from "../../components/CardSwiper";
 
 // Instantiate Prisma Client
 const prisma = new PrismaClient();
@@ -85,10 +87,10 @@ const ListedHome = (home = null) => {
     }
   };
 
-  // // Fallback version
-  // if (router.isFallback) {
-  //   return "Loading...";
-  // }
+  // Fallback version
+  if (router.isFallback) {
+    return "Loading...";
+  }
   return (
     <Layout>
       <div className="bg-gray-100 min-h-screen ">
@@ -131,9 +133,10 @@ const ListedHome = (home = null) => {
                   type="button"
                   disabled={deleting}
                   onClick={deleteHome}
-                  className="rounded-md border border-purple-700 text-purple-800 hover:bg-purple-700 hover:text-white focus:outline-none transition disabled:bg-purple-700 disabled:text-white disabled:opacity-50 disabled:cursor-not-allowed px-4 py-1"
+                  className=" flex text-center   rounded-md border border-purple-700 text-purple-800 hover:bg-purple-700 hover:text-white focus:outline-none transition disabled:bg-purple-700 disabled:text-white disabled:opacity-50 disabled:cursor-not-allowed px-4 py-1"
                 >
                   {deleting ? "Deleting..." : "Delete"}
+                  {/* <span className="text-xl  text-center"><MdDeleteOutline/></span> */}
                 </button>
               </div>
             ) : null}
@@ -170,26 +173,26 @@ const ListedHome = (home = null) => {
               </p>
               <div className="flex flex-wrap justify-start gap-5 lg:gap-10 py-3">
                 <p className="flex items-center py-2   ">
-                  <span className=" text-purple-800 ">
+                  <span className="text-xl text-purple-800 ">
                     <BiBed />
                   </span>
-                  <span className="px-1 text-sm text-gray-700">
+                  <span className="px-1 text-lg text-gray-700">
                     {home.beds ?? 0} Beds
                   </span>
                 </p>
                 <p className="flex items-center   ">
-                  <span className=" text-purple-800 ">
+                  <span className="text-xl text-purple-800 ">
                     <BiBath />
                   </span>
-                  <span className="px-1 text-sm text-gray-700">
+                  <span className="px-1 text-lg text-gray-700">
                     {home.baths ?? 0} Bathrooms
                   </span>
                 </p>
                 <p className=" flex items-center   ">
-                  <span className=" text-purple-800 ">
+                  <span className="text-xl text-purple-800 ">
                     <BiArea />
                   </span>
-                  <span className="px-1 text-sm text-gray-700">
+                  <span className="px-1 text-lg text-gray-700">
                     {" "}
                     {home.sqfeet ?? 0} Sqfeet
                   </span>
@@ -210,6 +213,10 @@ const ListedHome = (home = null) => {
                 </button>
               </div>
             </div>
+          </div>
+          <div className=" mt-10 ">
+                <p className=" text-2xl text-gray-700 font-bold py-5 ">Similar Houses</p>
+            <CardSwiper />
           </div>
         </div>
       </div>

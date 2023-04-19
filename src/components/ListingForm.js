@@ -11,12 +11,16 @@ import ImageUpload from './ImageUpload';
 const ListingSchema = Yup.object().shape({
   title: Yup.string().trim().required(),
   address: Yup.string().trim().required(),
+  locality: Yup.string().trim().required(),
   sqfeet: Yup.number().positive().integer().min(1).required(),
   description: Yup.string().trim().required(),
   price: Yup.number().positive().integer().min(1).required(),
   guests: Yup.number().positive().integer().min(1).required(),
   beds: Yup.number().positive().integer().min(1).required(),
   baths: Yup.number().positive().integer().min(1).required(),
+  ownerName: Yup.string().trim().required(),
+  contact: Yup.string().trim().required()
+
 });
 
 const ListingForm = ({
@@ -72,10 +76,14 @@ const ListingForm = ({
     image: '',
     title: '',
     description: '',
+    address: '',
+    locality: '',
     price: 0,
     guests: 1,
     beds: 1,
     baths: 1,
+    ownerName: '',
+    contact: '',
   };
 
   return (
@@ -115,9 +123,16 @@ const ListingForm = ({
               />
               <Input
                   name="address"
-                  type="string"
+                  type="text"
                   label="Address"
                   placeholder="address"
+                  disabled={disabled}
+                />
+                <Input
+                  name="locality"
+                  type="text"
+                  label="Locality"
+                  placeholder="Locality"
                   disabled={disabled}
                 />
                 <Input
@@ -133,7 +148,7 @@ const ListingForm = ({
                 name="price"
                 type="number"
                 min="0"
-                label="Price per night"
+                label="Price per month"
                 placeholder="100"
                 disabled={disabled}
               />
@@ -164,6 +179,20 @@ const ListingForm = ({
                   disabled={disabled}
                 />
               </div>
+              <Input
+                  name="ownerName"
+                  type="text"
+                  label="Name"
+                  placeholder="Name"
+                  disabled={disabled}
+                />
+                <Input
+                  name="contact"
+                  type="tel"
+                  label="Contact"
+                  placeholder="123-456-789"
+                  disabled={disabled}
+                />
             </div>
 
             <div className="flex justify-end">
@@ -187,12 +216,15 @@ ListingForm.propTypes = {
     image: PropTypes.string,
     title: PropTypes.string,
     address: PropTypes.string,
+    locality: PropTypes.string,
     sqfeet: PropTypes.number,
     description: PropTypes.string,
     price: PropTypes.number,
     guests: PropTypes.number,
     beds: PropTypes.number,
     baths: PropTypes.number,
+    ownerName: PropTypes.string,
+    contact: PropTypes.string,
   }),
   redirectPath: PropTypes.string,
   buttonText: PropTypes.string,
