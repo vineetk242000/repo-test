@@ -17,17 +17,18 @@ import CardSwiper from "../components/CardSwiper";
 import axios from "axios";
 import { useEffect, useState } from "react";
 
-
 export default function Home() {
   const [homes, setHomes] = useState([]);
   // loading state
   const [loading, setLoading] = useState(true);
+  // filter state
+  const [filter, setFilter] = useState({});
   useEffect(() => {
-    axios.get("/api/get-homes").then(res => {
+    axios.get(`/api/get-homes?${filter}`).then(res => {
       setHomes(res.data);
       setLoading(false);
     });
-  }, []);
+  }, [filter]);
 
   if (loading) {
     return (
