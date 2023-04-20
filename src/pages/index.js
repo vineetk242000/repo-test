@@ -13,6 +13,7 @@
 
 import Layout from "../components/Layout";
 import Grid from "../components/Grid";
+import Search from "../components/Search";
 import CardSwiper from "../components/CardSwiper";
 import axios from "axios";
 import { useEffect, useState } from "react";
@@ -52,13 +53,14 @@ export default function Home() {
       <Layout>
         <section className="bg-gray-100 min-h-screen ">
           <div className="mx-auto w-3/4 border border-none py-10">
-            <h1 className="text-xl font-medium text-gray-800">
+            <h1 className="font-medium text-gray-800 sm:text-4xl text-2xl">
               Top-rated places to stay
             </h1>
             <p className="text-gray-500">
               Explore some of the best places in the world
             </p>
-            <div className="container  flex justify-center">
+            <Search />
+            <div className="  flex justify-center">
               <Grid homes={homes} />
             </div>
           </div>

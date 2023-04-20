@@ -2,26 +2,24 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+@layer base {
+    
+  .dropdown {
+    @apply w-full lg:max-w-[296px]   cursor-pointer xl:z-20 lg:z-20 bg-white rounded-md border border-purple-500 ;
   }
-}
-
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  .dropdown-btn {
+    @apply flex py-2 items-center px-5 rounded-lg;
+  }
+  .dropdown-icon-primary {
+    @apply text-2xl mr-5 text-purple-600;
+  }
+  .dropdown-icon-secondary {
+    @apply text-2xl text-purple-700 ml-10 ;
+  }
+  .dropdown-menu {
+    @apply px-6 py-8 text-lg space-y-6 shadow-md bg-white absolute w-full z-20 list-none rounded-b-lg;
+  }
+  .menu-item{
+    @apply text-gray-700 cursor-pointer hover:bg-purple-200 px-2 py-1 rounded-md transition duration-300 ease-in-out;
+  }
 }
