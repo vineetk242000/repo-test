@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/legacy/image";
 import PropTypes from "prop-types";
-import { AiOutlineHeart } from "react-icons/ai";
+import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
 import { BiBed, BiBath, BiArea } from "react-icons/bi";
 import { BsStars, BsTriangleFill } from "react-icons/bs";
 import { BiBuildingHouse } from "react-icons/bi";
@@ -23,7 +23,7 @@ const Card = ({
 }) => (
 
   <Link href={`/homes/${id}`}>
-    <div className="relative max-w-sm w-80 rounded-lg shadow-md hover:shadow-xl bg-white">
+    <div className="relative max-w-sm w-80  rounded-lg shadow-md hover:shadow-xl bg-white">
       {/* <Image className="rounded-t-lg  " src="/dummyhouse.png" width={369} height={100} alt="" /> */}
      <div className=" overflow-hidden aspect-w-16 aspect-h-13 ">
      {image ? (
@@ -54,9 +54,24 @@ const Card = ({
           }).format(price ?? 0)}{" "}
           <span className=" text-sm font-normal text-gray-500">/month</span>
         </p>
-        <span className=" flex h-10 w-10 items-center justify-center  rounded-full border border-purple-700 text-xl text-purple-800 ">
-          <AiOutlineHeart />
-        </span>
+        <button
+         type="button"
+         onClick={e => {
+           e.preventDefault();
+           if (typeof onClickFavorite === 'function') {
+             onClickFavorite(id);
+           }
+         }}
+         className=" flex h-10 w-10 items-center justify-center  rounded-full border border-purple-700 text-xl text-purple-800 ">
+          {/* <AiFillHeart className={`w-7 h-7  transition ${
+              favorite ? 'text-purple-800' : ' text-purple-300'
+            }`}  /> */}
+            {favorite ? (
+              <AiFillHeart className="w-7 h-7  transition text-purple-800" />
+            ) : (
+              <AiOutlineHeart className="w-7 h-7  transition text-purple-700" />
+            )}
+        </button>
       </div>
       <div className="space-y-4  px-5 ">
         <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900  line-clamp-1 ">

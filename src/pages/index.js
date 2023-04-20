@@ -60,7 +60,7 @@ export default function Home() {
               Explore some of the best places in the world
             </p>
             <Search />
-            <div className="  flex justify-center">
+            <div className="flex justify-center lg:flex-none  ">
               <Grid homes={homes} />
             </div>
           </div>

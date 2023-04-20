@@ -20,6 +20,6 @@
     @apply px-6 py-8 text-lg space-y-6 shadow-md bg-white absolute w-full z-20 list-none rounded-b-lg;
   }
   .menu-item{
-    @apply text-gray-700 cursor-pointer hover:bg-purple-200 px-2 py-1 rounded-md transition duration-300 ease-in-out;
+    @apply text-gray-700 hover:text-purple-800 cursor-pointer hover:bg-purple-200 px-2 py-1 rounded-md transition duration-300 ease-in-out;
   }
 }
