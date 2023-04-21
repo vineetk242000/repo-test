@@ -48,7 +48,7 @@ const Grid = ({ homes = [] }) => {
     </p>
   ) : (
     <>
-      <div className="grid gap-4 pt-8 md:grid-cols-2 lg:grid-cols-3 3xl:grid-cols-6 lg:gap-14">
+      <div className="grid gap-4 pt-8 md:grid-cols-2 lg:grid-cols-3 lg:gap-14">
         {homes.map(home => (
           <Card key={home.id} {...home}
           onClickFavorite={toggleFavorite}
