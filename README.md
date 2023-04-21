@@ -6,7 +6,7 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 ### 1. Clone the repository and install dependencies
 
 ```
-https://github.com/OfficialSaurabh/Rent-House-App.git
+git clone https://github.com/OfficialSaurabh/Rent-House-App
 cd Rent-House-App
 npm install
 ```
