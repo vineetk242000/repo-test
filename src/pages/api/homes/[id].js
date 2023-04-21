@@ -4,8 +4,8 @@ import { authOptions } from "../auth/[...nextauth]";
 import { createClient } from "@supabase/supabase-js";
 
 const supabase = createClient(
-  process.env.SUPABASE_URL,
-  process.env.SUPABASE_KEY
+  process.env.NEXT_PUBLIC_SUPABASE_URL,
+  process.env.NEXT_PUBLIC_SUPABASE_KEY
 );
 
 const prisma = new PrismaClient();
@@ -25,7 +25,7 @@ export default async function handler(req, res) {
 
   // Check if authenticated user is the owner of this home
   const { id } = req.query;
-  if (!user?.listedHomes?.find(home => home.id === id)) {
+  if (!user?.listedHomes?.find((home) => home.id === id)) {
     return res.status(401).json({ message: "Unauthorized." });
   }
 
@@ -50,7 +50,9 @@ export default async function handler(req, res) {
         where: { id },
       });
       if (home.image) {
-        const path = home.image.split(`${process.env.SUPABASE_BUCKET}/`)?.[1];
+        /*const path = home.image.split(
+          `${process.env.NEXT_PUBLIC_SUPABASE_BUCKET}/`
+        )?.[1];*/
         await supabase.storage.from(process.env.SUPABASE_BUCKET).remove([path]);
       }
       res.status(200).json(home);
