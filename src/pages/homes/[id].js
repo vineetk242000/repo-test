@@ -1,8 +1,7 @@
-// pages/homes/[id].js
-
 import Image from 'next/image';
-// import Layout from '@/components/Layout';
 import { PrismaClient } from '@prisma/client';
+import { useRouter } from 'next/router';
+import Layout from '../../components/Layout';
 
 // Instantiate Prisma Client
 const prisma = new PrismaClient();
@@ -17,7 +16,7 @@ export async function getStaticPaths() {
     paths: homes.map(home => ({
       params: { id: home.id },
     })),
-    fallback: false,
+    fallback: true,
   };
 }   
 
@@ -42,7 +41,15 @@ export async function getStaticProps({ params }) {
 }
 
 const ListedHome = (home = null) => {
+   // Retrieve the Next.js router
+ 	const router = useRouter();
+  
+  // Fallback version
+  if (router.isFallback) {
+  	return 'Loading...'; 
+  }
   return (
+    <Layout>
     <div className='bg-gray-100 h-screen '>
       <div className="max-w-screen-lg mx-auto  ">
         <div className="flex flex-col sm:flex-row sm:justify-between sm:space-x-4 space-y-4">
@@ -77,8 +84,7 @@ const ListedHome = (home = null) => {
             <Image
               src={home.image}
               alt={home.title}
-              layout="fill"
-              objectFit="cover"
+              width={369} height={100} 
             />
           ) : null}
         </div>
@@ -86,6 +92,7 @@ const ListedHome = (home = null) => {
         <p className="mt-8 text-lg text-gray-800 ">{home?.description ?? ''}</p>
       </div>
     </div>
+    </Layout>
   );
 };
 
