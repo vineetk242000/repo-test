@@ -1,8 +1,30 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
+
 ## Getting Started
 
-First, run the development server:
+### 1. Clone the repository and install dependencies
+
+```
+https://github.com/OfficialSaurabh/Rent-House-App.git
+cd Rent-House-App
+npm install
+```
+
+### 2. Configure your local environment
+
+Rename the `.env.example` file in this directory to `.env` (which
+will be ignored by Git):
+
+```
+cp .env.local.example .env.local
+```
+
+Add your own values for all the environment variables.
+
+### 3. Start the application
+
+To run your site locally, use:
 
 ```bash
 npm run dev
@@ -12,6 +34,12 @@ yarn dev
 pnpm dev
 ```
 
+To run it in production mode, use:
+
+```
+npm run build
+npm run start
+```
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
