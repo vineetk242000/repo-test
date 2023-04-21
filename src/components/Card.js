@@ -23,9 +23,9 @@ const Card = ({
 }) => (
 
   <Link href={`/homes/${id}`}>
-    <div className="relative max-w-sm w-80  rounded-lg shadow-md hover:shadow-xl bg-white">
+    <div className="relative max-w-sm xl:w-80 md:w-full rounded-lg shadow-md hover:shadow-xl bg-white">
       {/* <Image className="rounded-t-lg  " src="/dummyhouse.png" width={369} height={100} alt="" /> */}
-     <div className=" overflow-hidden aspect-w-16 aspect-h-13 ">
+     <div className=" overflow-hidden aspect-w-16 aspect-h-10 ">
      {image ? (
         <Image
           src={image}
